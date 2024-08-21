@@ -1,0 +1,7 @@
+left player movement:
+    move up -> "W"
+    move down -> "S"
+
+right player movement:
+    move up -> "O"
+    move down -> "L"
