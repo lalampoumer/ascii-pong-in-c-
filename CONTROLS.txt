@@ -5,3 +5,6 @@ left player movement:
 right player movement:
     move up -> "O"
     move down -> "L"
+
+exit the game -> "ESC"
+refresh screen -> "SPACEBAR"
