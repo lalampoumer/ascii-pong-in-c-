@@ -32,7 +32,7 @@ int main()
 	int timer = 0;
 	int score_left = 0;
 	int score_right = 0;
-
+	int bounce = 0;
 	int rounds =0;
 	std::cout << "how many rounds?\n(-1)=inf: ";
 	std::cin >> rounds;
@@ -111,6 +111,7 @@ int main()
 			}
 			ball_speed = ball_speed + speed_over_time;
 			collision = false;
+			bounce++;
 		}
 		if (collision==false) 
 		{
@@ -137,9 +138,10 @@ int main()
 			}
 			ball_speed = ball_speed + speed_over_time;
 			collision = false;
+			bounce++;
 		}
 
-		if (ball_x >= h_res)
+		if (ball_x > h_res+2.0)
 		{
 			system("cls");
 			score_left++;
@@ -152,9 +154,10 @@ int main()
 			val_x = 0;
 			val_y = 0;
 			ball_speed = 25;
+			bounce = 0;
 		}
 
-		if (ball_x < -1.0) 
+		if (ball_x < -2.0) 
 		{
 			system("cls");
 			score_right++;
@@ -167,6 +170,7 @@ int main()
 			val_x = 0;
 			val_y = 0;
 			ball_speed = 25;
+			bounce = 0;
 		}
 
 		if (GetKeyState(VK_ESCAPE) & 0x8000)
@@ -185,6 +189,16 @@ int main()
 		std::cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n";
 		std::cout<<"                                      " << score_left << "-" << score_right << std::endl; //
 		std::cout << "\n";
+
+		if (ball_speed_x >= 0) 
+		{
+			std::cout << "                                 BALL SPEED: " << ball_speed_x << std::endl;
+		}
+		else 
+		{
+			std::cout << "                                 BALL SPEED: " << -ball_speed_x << std::endl;
+		}
+		std::cout << "                                 BALL BOUNCE: " << bounce << std::endl;
 		//walls border-stop
 		if (y+ wall_height1 > v_res)
 		{y = (v_res - wall_height1);}
@@ -204,3 +218,4 @@ int main()
 	}
 	return 0;
 }
+
