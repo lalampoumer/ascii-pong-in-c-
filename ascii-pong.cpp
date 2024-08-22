@@ -37,7 +37,7 @@ int main()
 	std::cout << "how many rounds?\n(-1)=inf: ";
 	std::cin >> rounds;
 	
-
+	float play_time =0 ;
 	std::cout << "ball speed over time?\ndefault(0): ";
 	std::cin >> speed_over_time;
 
@@ -45,6 +45,29 @@ int main()
 	{
 		speed_over_time = 0.5;
 	}
+
+	srand(time(0));
+	if (rand() % 2 == 1) 
+	{
+		ball_speed_x = 0.5;
+	}
+	else 
+	{
+		ball_speed_x = -0.5;
+	}
+
+	srand(time(0)+1);
+	if (rand() % 2 == 1)
+	{
+		ball_speed_y = -0.5;
+	}
+	else
+	{
+		ball_speed_y = 0.5;
+	}
+	
+
+
 	while (run)
 	{
 		start = clock();
@@ -155,6 +178,27 @@ int main()
 			val_y = 0;
 			ball_speed = 25;
 			bounce = 0;
+
+
+			srand(time(0));
+			if (rand() % 2 == 1)
+			{
+				ball_speed_x = 0.5;
+			}
+			else
+			{
+				ball_speed_x = -0.5;
+			}
+
+			srand(time(0) + 1);
+			if (rand() % 2 == 1)
+			{
+				ball_speed_y = -0.5;
+			}
+			else
+			{
+				ball_speed_y = 0.5;
+			}
 		}
 
 		if (ball_x < -2.0) 
@@ -171,6 +215,26 @@ int main()
 			val_y = 0;
 			ball_speed = 25;
 			bounce = 0;
+
+			srand(time(0));
+			if (rand() % 2 == 1)
+			{
+				ball_speed_x = 0.5;
+			}
+			else
+			{
+				ball_speed_x = -0.5;
+			}
+
+			srand(time(0)+1);
+			if (rand() % 2 == 1)
+			{
+				ball_speed_y = -0.5;
+			}
+			else
+			{
+				ball_speed_y = 0.5;
+			}
 		}
 
 		if (GetKeyState(VK_ESCAPE) & 0x8000)
@@ -199,6 +263,11 @@ int main()
 			std::cout << "                                 BALL SPEED: " << -ball_speed_x << std::endl;
 		}
 		std::cout << "                                 BALL BOUNCE: " << bounce << std::endl;
+		std::cout << "                                 PLAY TIME: " << static_cast<int> (play_time)<<" s" << std::endl;
+
+		std::cout << "                                 FPS: " << 1000/ms << std::endl;
+
+		play_time = (play_time + (1*(ms))/1000);
 		//walls border-stop
 		if (y+ wall_height1 > v_res)
 		{y = (v_res - wall_height1);}
@@ -218,4 +287,3 @@ int main()
 	}
 	return 0;
 }
-
